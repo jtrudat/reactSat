@@ -1,17 +1,17 @@
-import {Input} from './components/Input'
 import { useState } from 'react'
+import { Input } from './components/Input'
 
-function App() {
-  let [word, setWord] = useState('the passed up word')
-  let onNewWord = (term)=>{
-    setWord(term)
-  } 
-  return (
+export let App = ()=>{
+let [word, setWord] = useState('the passed up word')
+let onPassHandler = (passUp)=>{
+  setWord(passUp)
+}
+  return(
     <div>
-      <Input onSwitch = {onNewWord}></Input>
+      
+      <Input onPass={onPassHandler}></Input>
       {word}
-    </div>
-  );
+      </div>
+  )
 }
 
-export default App;
