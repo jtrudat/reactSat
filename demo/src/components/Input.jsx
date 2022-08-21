@@ -1,30 +1,30 @@
 import { useState } from 'react'
 
 export let Input = (props)=>{
-let [data, setData] = useState('')    
-
-
-let onChangeValue = (evt)=>{
-    
-    setData(evt.target.value)
-    console.log(evt.target.value)
+let [dataEntry, setDataEntry] = useState('')
+    let onChangeHandler = (evt)=>{
+        setDataEntry(evt.target.value)
+        console.log(evt.target.value)
+        console.log(dataEntry)
+        
 }
-let clear = ()=>{
-    setData('')
-}
-let sendUp = (evt)=>{
+
+let submitHandler = (evt)=>{
     evt.preventDefault()
-    props.onPass(data)
-    setData('')
+    props.onChangeUp(dataEntry)
+    setDataEntry('')
 }
-        return(
-            <div>
-                <form onSubmit={sendUp}>
-                <input  onChange={onChangeValue} placeholder='information' value={data}></input>
-                <button type='submit'>submit up</button>
-                </form>
-                <button onClick={clear}>clear</button>
-                
-            </div>
-        )
+
+let clear = ()=>{
+    setDataEntry('')
+}
+    return(
+        <div>
+            <form onSubmit={submitHandler}>
+                <input onChange={onChangeHandler} placeholder='info' value={dataEntry}></input>
+                <button type='submit'>Submit</button>
+            </form>
+            <button onClick={clear}>Clear</button>
+        </div>
+    )
 }

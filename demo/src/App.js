@@ -1,17 +1,18 @@
 import { useState } from 'react'
+import './App.css'
 import { Input } from './components/Input'
 
 export let App = ()=>{
-let [word, setWord] = useState('the passed up word')
-let onPassHandler = (passUp)=>{
-  setWord(passUp)
-}
-  return(
-    <div>
-      
-      <Input onPass={onPassHandler}></Input>
-      {word}
-      </div>
-  )
+let [passUp, setPassUp] = useState('waiting for pass up function')
+
+let changeHandler = (newValue)=>{
+  setPassUp(newValue)
 }
 
+  return(
+    <div className="App">
+      <Input onChangeUp={changeHandler}></Input>
+      {passUp}
+    </div>
+  )
+}
